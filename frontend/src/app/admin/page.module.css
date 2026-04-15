@@ -14,6 +14,10 @@
   gap: var(--space-xl);
 }
 
+.sidebarHeader {
+  margin: 0;
+}
+
 .sidebarBrand {
   font-family: var(--font-heading);
   font-size: 1.3rem;
@@ -227,6 +231,81 @@
   }
 
   .sidebar {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem max(0.65rem, env(safe-area-inset-left)) 0.65rem max(0.65rem, env(safe-area-inset-right));
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 70px;
+    z-index: 25;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    min-height: auto;
+  }
+
+  .sidebarHeader {
+    flex-shrink: 0;
+  }
+
+  .sidebarBrand {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .profile {
     display: none;
+  }
+
+  .sidebarNav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    flex: 1 1 auto;
+    min-width: min-content;
+    align-items: center;
+  }
+
+  .navLink {
+    flex-shrink: 0;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .navGlyph {
+    display: none;
+  }
+
+  .sidebar > :last-child {
+    flex-shrink: 0;
+  }
+
+  /* AdminLogoutButton: default styles use width 100% / margin-top auto — row layout needs compact button */
+  .sidebar > button {
+    margin-top: 0;
+    width: auto;
+    align-self: center;
+    white-space: nowrap;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .content {
+    padding: var(--space-md);
+  }
+
+  .widgetGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .topBar h2 {
+    font-size: 1.25rem;
+  }
+
+  .chartCard {
+    padding: var(--space-md);
   }
 }

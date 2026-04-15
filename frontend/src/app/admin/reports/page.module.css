@@ -114,3 +114,31 @@
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
 }
+
+@media (max-width: 768px) {
+  .panel {
+    padding: var(--space-lg);
+    max-width: none;
+    margin-left: max(0.5rem, env(safe-area-inset-left));
+    margin-right: max(0.5rem, env(safe-area-inset-right));
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .field {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .select,
+  .input {
+    font-size: 1rem;
+    min-height: 44px;
+  }
+
+  .generateBtn {
+    width: 100%;
+  }
+}

@@ -112,6 +112,11 @@
 }
 
 @media (max-width: 768px) {
+  .page {
+    padding: var(--space-md) max(1rem, env(safe-area-inset-left)) var(--space-xl)
+      max(1rem, env(safe-area-inset-right));
+  }
+
   .controls {
     flex-direction: column;
   }
@@ -119,5 +124,10 @@
   .header {
     flex-direction: column;
     gap: var(--space-md);
+  }
+
+  .searchInput {
+    font-size: 1rem;
+    min-height: 44px;
   }
 }

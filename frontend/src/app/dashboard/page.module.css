@@ -200,11 +200,21 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: var(--space-2xl) max(1rem, env(safe-area-inset-left)) var(--space-xl)
+      max(1rem, env(safe-area-inset-right));
+  }
+
+  .categoriesSection {
+    padding: var(--space-2xl) max(1rem, env(safe-area-inset-left)) var(--space-3xl)
+      max(1rem, env(safe-area-inset-right));
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }

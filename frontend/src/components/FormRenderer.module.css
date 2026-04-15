@@ -280,10 +280,20 @@
 
 @media (max-width: 768px) {
   .card {
-    padding: var(--space-lg);
+    padding: var(--space-lg) max(0.75rem, env(safe-area-inset-left)) var(--space-xl)
+      max(0.75rem, env(safe-area-inset-right));
   }
 
   .submitBtn {
     max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Avoid iOS zoom-on-focus on inputs */
+  .input,
+  .textarea,
+  .select {
+    font-size: 1rem;
   }
 }

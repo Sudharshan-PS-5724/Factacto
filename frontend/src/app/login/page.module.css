@@ -238,8 +238,13 @@
   }
 
   .leftPanel {
-    padding: 3rem 2rem 2rem;
-    min-height: 35vh;
+    padding: 3rem max(1.25rem, env(safe-area-inset-left)) 2rem max(1.25rem, env(safe-area-inset-right));
+    min-height: 32vh;
+  }
+
+  .backLink {
+    top: max(1.25rem, env(safe-area-inset-top));
+    left: max(1.25rem, env(safe-area-inset-left));
   }
 
   .brandTitle {
@@ -252,5 +257,33 @@
 
   .rightPanel::before {
     display: none;
+  }
+
+  .rightPanel {
+    padding: 2rem max(1.25rem, env(safe-area-inset-left)) max(2rem, env(safe-area-inset-bottom))
+      max(1.25rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 480px) {
+  .leftPanel {
+    padding: 2.5rem 1rem 1.5rem;
+    min-height: auto;
+  }
+
+  .brandTitle {
+    font-size: 2rem;
+  }
+
+  .factactoMark {
+    font-size: clamp(1.5rem, 8vw, 2.25rem);
+  }
+
+  .rightPanel {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .formTitle {
+    font-size: 1.45rem;
   }
 }

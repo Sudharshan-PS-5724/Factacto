@@ -50,6 +50,13 @@
   }
 }
 
+@media (max-width: 768px) {
+  .shell {
+    padding: var(--space-lg) max(0.75rem, env(safe-area-inset-left)) var(--space-2xl)
+      max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
 .aside {
   color: rgba(255, 255, 255, 0.92);
   padding: var(--space-md) 0;

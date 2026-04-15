@@ -159,3 +159,29 @@
   background: var(--pink-500);
   transform: scale(1.2);
 }
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 max(0.5rem, env(safe-area-inset-left)) 0 max(0.5rem, env(safe-area-inset-right));
+  }
+
+  .stage {
+    min-height: 200px;
+    border-radius: var(--radius-lg);
+  }
+
+  .navBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+
+  .captionBar {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .caption {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+}

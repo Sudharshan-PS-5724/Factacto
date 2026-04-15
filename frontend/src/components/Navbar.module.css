@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 max(1rem, env(safe-area-inset-left, 0px)) 0 max(1rem, env(safe-area-inset-right, 0px));
 }
 
 .welcome {
@@ -210,6 +210,7 @@
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
+    z-index: 1002;
   }
 
   .links {
@@ -217,13 +218,18 @@
     top: 60px;
     left: 0;
     right: 0;
+    z-index: 1001;
     background: var(--white);
     flex-direction: column;
-    padding: 2rem;
-    gap: 1.5rem;
+    padding: 1.25rem 1.25rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+    gap: 1.25rem;
     transform: translateY(-120%);
     transition: transform 0.3s ease;
     border-bottom: 1px solid var(--gray-200);
+    box-shadow: 0 12px 40px rgba(10, 16, 69, 0.12);
+    max-height: calc(100vh - 60px - env(safe-area-inset-top, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .dark .links {

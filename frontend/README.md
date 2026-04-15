@@ -217,7 +217,81 @@ By default Next serves on port **3000** (set `PORT` if needed). Run the **Expres
 - `API_URL` — URL the Next server uses to proxy login to Express (often the same as `NEXT_PUBLIC_API_URL` if the API is public).
 - `NEXT_PUBLIC_SITE_URL` — public URL of the Next site for metadata.
 
-Typical deployment split: **Vercel** (or similar) for Next.js; **Railway**, **Render**, **VM**, etc. for the Express API — both with the same env semantics as above.
+Deploy the UI and API separately: **Vercel** for Next.js and **Render** (free web service) for Express. Env semantics match the list above.
+
+---
+
+## Deployment: Vercel + Render
+
+**Order:** MongoDB Atlas → Render (API) → Vercel (Next). Point Vercel at the Render API URL only after Render is live.
+
+### 1. MongoDB Atlas
+
+1. Create a cluster (e.g. **M0** free), database user, and note **`MONGO_URI`** (or use split `MONGODB_*` variables as in `.env.example`).
+2. **Network Access:** allow **`0.0.0.0/0`** so Render’s outbound IPs can connect (you can narrow this later).
+
+### 2. Render — Express API
+
+1. Sign up at [render.com](https://render.com) and connect your **GitHub** account.
+2. **New** → **Web Service** → select this repository.
+3. **Configuration**
+
+   | Setting | Value |
+   |---------|--------|
+   | **Root Directory** | `frontend` |
+   | **Runtime** | Node |
+   | **Build Command** | `npm install` |
+   | **Start Command** | `node server/index.js` |
+   | **Instance type** | **Free** (cold start after ~15 min idle; first request may be slow) |
+
+4. **Environment** (Render dashboard → your service → **Environment**), add at least:
+
+   | Variable | Purpose |
+   |----------|---------|
+   | `MONGO_URI` | Atlas connection string (or `MONGODB_URI` + `MONGODB_USERNAME` + `MONGODB_PASSWORD`) |
+   | `DB_NAME` or `MONGODB_DB_NAME` | e.g. `mdb` |
+   | `ADMIN_EMAIL` | Comma-separated admin emails |
+   | `ADMIN_PASSWORD` | Plain password for those emails |
+   | `ADMIN_ROLE_EMAIL` | Email that receives `admin` role |
+   | `APPS_SCRIPT_URL` | Optional |
+
+   Do **not** set `PORT` manually — Render injects `PORT`; the server already uses `process.env.PORT`.
+
+5. **Create Web Service** and wait for deploy. Copy the public URL (e.g. `https://factacto-api.onrender.com`).
+
+6. **Verify:** open `https://YOUR-RENDER-SERVICE.onrender.com/health` — expect `{"ok":true}`.
+
+### 3. Vercel — Next.js
+
+1. Sign up at [vercel.com](https://vercel.com) and **Add New Project** → import the **same** GitHub repo.
+2. **Configure**
+
+   | Setting | Value |
+   |---------|--------|
+   | **Root Directory** | `frontend` |
+   | **Framework Preset** | Next.js |
+   | **Build Command** | `npm run build` (default) |
+   | **Output** | default |
+
+3. **Environment Variables** (Production; add **Preview** too if previews should call a real API):
+
+   | Name | Value |
+   |------|--------|
+   | `NEXT_PUBLIC_API_URL` | `https://YOUR-RENDER-SERVICE.onrender.com` (no trailing slash) |
+   | `API_URL` | Same as `NEXT_PUBLIC_API_URL` (login proxy server-side) |
+   | `NEXT_PUBLIC_SITE_URL` | `https://YOUR-PROJECT.vercel.app` or your custom domain |
+
+4. **Deploy**, then open the Vercel URL and test login and a form submission.
+
+### 4. Custom domains (optional)
+
+- **Vercel:** Project → **Domains** → add your site domain; update `NEXT_PUBLIC_SITE_URL`.
+- **Render:** Service → **Settings** → **Custom Domain** for the API if you want e.g. `api.yourschool.edu`; then set **`NEXT_PUBLIC_API_URL`** and **`API_URL`** on Vercel to that HTTPS URL and **redeploy**.
+
+### 5. Free-tier notes (Render)
+
+- Services **spin down** after inactivity; the next request **wakes** the API (delay of seconds is normal).
+- Render documents free limits in their [free tier docs](https://render.com/docs/free); not intended for heavy production load without upgrading.
 
 ---
 

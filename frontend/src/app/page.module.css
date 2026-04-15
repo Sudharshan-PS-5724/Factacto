@@ -1250,6 +1250,11 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 5.5rem max(1rem, env(safe-area-inset-left)) 3rem max(1rem, env(safe-area-inset-right));
+    min-height: min(100vh, 920px);
+  }
+
   .statsInner > div {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
@@ -1266,11 +1271,72 @@
 
   .quickLinks {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .heroCta {
     flex-direction: column;
     align-items: center;
+  }
+
+  .statsSection,
+  .aboutSection,
+  .quoteSection,
+  .quoteSection2,
+  .featuresSection,
+  .flowSection {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .flowStep {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+  }
+
+  .flowNum {
+    font-size: 1.35rem;
+  }
+
+  .quoteCard {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .quoteMark {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 0.875rem 2.5rem;
+  }
+
+  .appName {
+    letter-spacing: 0.12em;
+    font-size: clamp(1.45rem, 7.5vw, 2.75rem);
+  }
+
+  .statsInner > div {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .statNumber {
+    font-size: 2.35rem;
+  }
+
+  .statCard {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.45rem, 6vw, 2rem);
+  }
+
+  .scrollIndicator {
+    bottom: 1.25rem;
   }
 }
 

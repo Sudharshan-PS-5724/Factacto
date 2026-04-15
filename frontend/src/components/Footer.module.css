@@ -83,5 +83,18 @@
   .inner {
     flex-direction: column;
     text-align: center;
+    padding: 2rem max(1rem, env(safe-area-inset-left)) 2rem max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 480px) {
+  .factacto {
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+  }
+
+  .topBarItem {
+    font-size: 0.62rem;
+    padding: 0 1rem;
   }
 }
