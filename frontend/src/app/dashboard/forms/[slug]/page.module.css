@@ -1,0 +1,59 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbLink {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
+}
+
+.breadcrumbMid {
+  color: rgba(200, 230, 170, 0.95);
+  font-weight: 500;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumbCurrent {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notFound {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+  min-height: 50vh;
+}
+
+.notFound h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--blue-900);
+  margin-bottom: var(--space-md);
+}
+
+.notFound p {
+  color: var(--gray-600);
+  margin-bottom: var(--space-xl);
+}

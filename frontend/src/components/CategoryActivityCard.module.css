@@ -1,0 +1,230 @@
+.card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  padding-top: calc(var(--space-xl) + 5px);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease, border-color 0.35s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  isolation: isolate;
+  background: linear-gradient(165deg, #fff5f8 0%, #fffafd 42%, #f8f4ff 100%);
+  border: 1px solid rgba(59, 95, 212, 0.14);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 14px 40px rgba(59, 95, 212, 0.1),
+    0 4px 14px rgba(232, 67, 147, 0.07),
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset;
+}
+
+/* Top accent bar */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(90deg, var(--card-accent-from), var(--card-accent-to));
+  z-index: 2;
+  box-shadow: 0 2px 14px rgba(59, 95, 212, 0.35);
+}
+
+/* Soft glow blob behind content */
+.card::after {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -50px;
+  right: -40px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--card-glow, rgba(124, 58, 237, 0.22)) 0%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-spring);
+}
+
+.card:hover::after {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(59, 95, 212, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.98) inset,
+    0 28px 56px rgba(59, 95, 212, 0.14),
+    0 12px 28px rgba(232, 67, 147, 0.11),
+    0 0 0 1px rgba(255, 255, 255, 0.75) inset,
+    0 0 48px rgba(59, 95, 212, 0.12);
+}
+
+.a0 {
+  --card-accent-from: var(--blue-500);
+  --card-accent-to: var(--pink-400);
+  --card-glow: rgba(59, 95, 212, 0.2);
+}
+
+.a1 {
+  --card-accent-from: var(--pink-500);
+  --card-accent-to: var(--blue-400);
+  --card-glow: rgba(232, 67, 147, 0.18);
+}
+
+.a2 {
+  --card-accent-from: #7c3aed;
+  --card-accent-to: #22d3ee;
+  --card-glow: rgba(124, 58, 237, 0.22);
+}
+
+.a3 {
+  --card-accent-from: #0891b2;
+  --card-accent-to: var(--blue-500);
+  --card-glow: rgba(8, 145, 178, 0.2);
+}
+
+.a4 {
+  --card-accent-from: #4338ca;
+  --card-accent-to: var(--pink-400);
+  --card-glow: rgba(67, 56, 202, 0.2);
+}
+
+.a5 {
+  --card-accent-from: #ea580c;
+  --card-accent-to: #f472b6;
+  --card-glow: rgba(234, 88, 12, 0.16);
+}
+
+.cardTop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  gap: var(--space-sm);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--card-accent-from), var(--card-accent-to));
+  flex-shrink: 0;
+  box-shadow:
+    0 4px 18px rgba(59, 95, 212, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.formCount {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pink-500);
+  font-family: var(--font-body);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    rgba(232, 67, 147, 0.12),
+    rgba(59, 95, 212, 0.08)
+  );
+  border: 1px solid rgba(232, 67, 147, 0.15);
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--blue-900);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.desc {
+  position: relative;
+  z-index: 1;
+  font-size: 0.84rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  flex: 1;
+}
+
+.linkList {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.2s ease,
+    transform 0.25s var(--ease-spring);
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 248, 255, 0.98) 100%);
+  border: 1px solid rgba(59, 95, 212, 0.12);
+  box-shadow: 0 1px 3px rgba(10, 16, 69, 0.05);
+}
+
+.formLink:hover {
+  color: var(--blue-900);
+  border-color: rgba(59, 95, 212, 0.28);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(237, 242, 255, 0.98) 100%);
+  box-shadow:
+    0 0 0 1px rgba(232, 67, 147, 0.12),
+    0 8px 22px rgba(59, 95, 212, 0.12);
+  transform: translateX(3px);
+}
+
+.formLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.arrow {
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.25s var(--ease-spring);
+  color: var(--card-accent-from);
+}
+
+.formLink:hover .arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}

@@ -1,0 +1,20 @@
+{
+  "name": "ex_report_gen",
+  "version": "1.0.0",
+  "main": "report.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docx": "^8.5.0",
+    "express": "^4.19.2",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.7.0"
+  },
+  "description": ""
+}

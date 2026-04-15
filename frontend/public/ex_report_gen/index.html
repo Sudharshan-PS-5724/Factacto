@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCX Generation</title>
+  <!-- Include Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Include external scripts -->
+  <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+  <script src="script.js"></script> <!-- Include the new script file -->
+  <style>
+    /* Apply Poppins font to the whole document */
+    body {
+      font-family: 'Poppins', sans-serif; /* Updated font-family */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .container {
+      margin: 20px auto;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      color: #0E4AA0FF;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: white;
+      border: 2px solid #0E4AA0FF;
+      color: #0E4AA0FF;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      border-radius: 25px; /* Curved buttons */
+      font-family: 'Poppins', sans-serif; /* Updated font-family */
+    }
+
+    button:hover {
+      background-color: #0E4AA0FF;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Report Generation</h1>
+    <button type="button" onclick="fetchData()">Click to generate document</button>
+  </div>
+</body>
+</html>
